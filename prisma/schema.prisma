@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model artist {
+  id               String    @id @unique
+  name             String
+  createdAt        DateTime? @default(now())
+  updatedAt        DateTime?
+  website          String?
+  instagram        String?
+  discord          String?
+  selfOrder        Boolean
+  isSelfOrdored    Boolean
+  nationality      String?
+  artisanCollector String?
+  src              String?
+  twitter          String?
+  reddit           String?
+}
+
+model collection {
+  id        String    @id @unique
+  name      String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime?
+  artistId  String?
+  profile   String?
+  design    String?
+  tags      String?
+  cast      String?
+
+  @@index([artistId], map: "collection_artistId_fkey")
+}
+
+model colorway {
+  id           String   @id @unique
+  name         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime
+  collectionId String?
+  releaseDate  String?
+  totalCount   Int?
+  notes        String?
+  isCover      Boolean? @default(false)
+  img          String?
+
+  @@index([collectionId], map: "colorway_collectionId_fkey")
+}
+
+model itemimage {
+  id         String   @id @unique(map: "itemImage_id_key")
+  name       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime
+  colorwayId String?
+
+  @@index([colorwayId], map: "itemImage_colorwayId_fkey")
+}

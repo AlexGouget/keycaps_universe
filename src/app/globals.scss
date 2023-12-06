@@ -59,7 +59,23 @@ body {
 //}
 
 
-$borderWidth: 3px;
+$borderWidth: 5px;
+
+
+//background gradient dark to transparent
+.grad-dark-to-transparent {
+     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%) !important;
+}
+
+.linear-gradient {
+  background: linear-gradient(60deg,#f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
 
 .gradient-border {
   background: #1D1F20;
@@ -76,13 +92,22 @@ $borderWidth: 3px;
   height: calc(100% + $borderWidth * 2);
   width: calc(100% + $borderWidth * 2);
   background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-  //border-radius: calc(2 * $borderWidth);
   z-index: -1;
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
   @apply rounded-full
 }
 
+.ant-input{
+
+  //input placeholder
+    &::placeholder {
+      @apply text-dark-900
+    }
+
+
+  @apply bg-dark-300
+}
 
 @keyframes animatedgradient {
   0% {

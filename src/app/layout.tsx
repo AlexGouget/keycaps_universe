@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import {Inter, Libre_Baskerville, Montserrat} from 'next/font/google'
 import './globals.scss'
+import Header from "@/components/header/Header";
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
-// import libre basketcille regular
+//dynamic import
 
 
 export const metadata: Metadata = {
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} hero-pattern`}>{children}</body>
+      <body className={`${montserrat.className} hero-pattern`}>
+         <Header />
+      {children}
+      </body>
     </html>
   )
 }
