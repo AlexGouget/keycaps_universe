@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+
+  --primary: #E9E9E9;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: var(--primary);
+  background-color: #171717;
+}
+
+
+.hero-pattern{
+  background-image: url('/assets/img/background/keycaps25.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.btn-wrap{
+  background: linear-gradient(to right, red, purple);
+  padding: 3px;
+}
+
+
+.glass {
+  background: linear-gradient(180deg, rgba(217, 217, 217, 0.15) 0%, rgba(217, 217, 217, 0) 100%) !important;
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+
+  //border with red and blue gradient
+  //border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+//.glass:before {
+//  content: '';
+//  position: absolute;
+//  top: -10px;
+//  left: -10px;
+//  right: -10px;
+//  bottom: -10px;
+//  border: 10px solid rgba( 255, 255, 255, 0.18 );
+//  @apply rounded-full
+//}
+
+
+$borderWidth: 3px;
+
+.gradient-border {
+  background: #1D1F20;
+  position: relative;
+  border-radius: $borderWidth;
+  @apply rounded-full
+}
+.gradient-border:after {
+  content: '';
+  position: absolute;
+  border-radius: $borderWidth;
+  top: calc(-1 * $borderWidth);
+  left: calc(-1 * $borderWidth);
+  height: calc(100% + $borderWidth * 2);
+  width: calc(100% + $borderWidth * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  //border-radius: calc(2 * $borderWidth);
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+  @apply rounded-full
+}
+
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
