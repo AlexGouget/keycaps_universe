@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import {Inter, Libre_Baskerville, Montserrat} from 'next/font/google'
 import './globals.scss'
-import Header from "@/components/header/Header";
+import Navigation from "@/components/header/Navigation";
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.className} hero-pattern`}>
-         <Header />
+         <Navigation />
       {children}
       </body>
     </html>

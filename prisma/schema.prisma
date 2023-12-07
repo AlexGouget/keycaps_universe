@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,57 +11,59 @@ datasource db {
 }
 
 model artist {
-  id               String    @id @unique
+  id               String       @id @unique
   name             String
-  createdAt        DateTime? @default(now())
-  updatedAt        DateTime?
+  createdAt        DateTime?    @default(now())
+  updatedAt        DateTime?    @updatedAt
   website          String?
+  twitter          String?
+  reddit           String?
   instagram        String?
   discord          String?
   selfOrder        Boolean
   isSelfOrdored    Boolean
+  src              String? // src
   nationality      String?
   artisanCollector String?
-  src              String?
-  twitter          String?
-  reddit           String?
+  collection       collection[]
+  colorways        colorway[]
 }
 
 model collection {
-  id        String    @id @unique
+  id        String     @id @unique
   name      String
-  createdAt DateTime? @default(now())
-  updatedAt DateTime?
+  createdAt DateTime?  @default(now())
+  updatedAt DateTime?  @updatedAt
   artistId  String?
+  artist    artist?    @relation(fields: [artistId], references: [id])
+  colorways colorway[]
   profile   String?
   design    String?
-  tags      String?
   cast      String?
-
-  @@index([artistId], map: "collection_artistId_fkey")
 }
 
 model colorway {
-  id           String   @id @unique
+  id           String      @id @unique
   name         String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
   collectionId String?
+  collection   collection? @relation(fields: [collectionId], references: [id])
+  artistId     String?
+  artist       artist?     @relation(fields: [artistId], references: [id])
+  itemImage    itemImage[]
   releaseDate  String?
+  img          String?
   totalCount   Int?
   notes        String?
-  isCover      Boolean? @default(false)
-  img          String?
-
-  @@index([collectionId], map: "colorway_collectionId_fkey")
+  isCover      Boolean?    @default(false)
 }
 
-model itemimage {
-  id         String   @id @unique(map: "itemImage_id_key")
+model itemImage {
+  id         String    @id @unique
   name       String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
   colorwayId String?
-
-  @@index([colorwayId], map: "itemImage_colorwayId_fkey")
+  colorway   colorway? @relation(fields: [colorwayId], references: [id])
 }

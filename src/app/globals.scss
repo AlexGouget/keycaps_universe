@@ -26,6 +26,8 @@ body {
 
 .hero-pattern{
   background-image: url('/assets/img/background/keycaps25.png');
+  //fixed background image
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -59,7 +61,7 @@ body {
 //}
 
 
-$borderWidth: 5px;
+$borderWidth: 4px;
 
 
 //background gradient dark to transparent
