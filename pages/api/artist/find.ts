@@ -49,7 +49,9 @@ function generateWhereClause(query: ArtistQuery) {
     const { country, design, cast, profile, query: searchQuery } = query;
     const whereClause: any = {};
 
-    if (country) whereClause.nationality = { contains: country };
+    if (country) {
+        whereClause.nationality = { in: country.split(',') };
+    }
     if (searchQuery) whereClause.name = { contains: searchQuery };
 
     const collectionConditions = [];

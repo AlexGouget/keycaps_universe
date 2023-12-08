@@ -1,7 +1,20 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
+import cron from 'node-cron';
 
-async function main() {
+
+//every 5 seconds
+cron.schedule('*/5 * * * * *', async () => {
+        console.log('Tâche cron exécutée !');
+});
+
+export async function main() {
+        await seed();
+}
+
+
+
+export async function seed() {
         const response = await fetch(
             'https://raw.githubusercontent.com/keycap-archivist/database/master/db/catalog.json',
         );
@@ -10,8 +23,8 @@ async function main() {
         let count = 0;
 
 
-        for(const artist of data) {
-                const artistData  = {
+        for (const artist of data) {
+                const artistData = {
                         id: artist.id,
                         src: artist.src,
                         name: artist.name,
@@ -35,12 +48,12 @@ async function main() {
                         update: artistData
                 });
 
-                const {sculpts:collections} = artist;
+                const {sculpts: collections} = artist;
 
 
-                for(const collection of collections){
+                for (const collection of collections) {
                         const collectionId = await handleCollection(collection, artist.id);
-                        for(const colorway of collection.colorways){
+                        for (const colorway of collection.colorways) {
                                 await prisma.colorway.upsert({
                                         where: {
                                                 id: colorway.id
@@ -76,15 +89,6 @@ async function main() {
                 console.log(`${count} of ${total} artists processed`);
 
         }
-
-
-
-
-
-
-
-
-
 }
 
 async function handleCollection(collection:any, artistId:string):Promise<string> {

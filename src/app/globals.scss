@@ -111,6 +111,46 @@ input:focus {
   @apply bg-dark-300
 }
 
+//block, w-full, p-4,text-sm,text-gray-900,rounded-full, bg-gray-50, dark:bg-dark-400,dark:border-dark-700,dark:placeholder-gray-400,dark:text-primary/80
+.input-text {
+  @apply block w-full p-4 text-sm text-gray-900 rounded-full bg-gray-50 dark:bg-dark-400 dark:border-dark-700 dark:placeholder-gray-400 dark:text-primary/80 ps-10
+}
+
+.ant-select{
+  @apply block w-full text-sm text-gray-900 rounded-full bg-gray-50 dark:bg-dark-400 dark:border-dark-700 dark:placeholder-gray-400 dark:text-primary/80
+}
+.ant-select-selector{
+  //remove all style
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ant-select-clear{
+  color: #9CA3AF !important;
+  background: none !important;
+}
+
+
+
+
+.ant-select-arrow svg{
+  @apply text-dark-900 fill-dark-900
+}
+
+.ant-select-focused{
+  border: none !important;
+  border-color: transparent !important;
+  box-shadow:  none !important;
+}
+
+.ant-select-selection-placeholder{
+  color: #9CA3AF !important;
+  @apply text-dark-900
+}
+
+
 @keyframes animatedgradient {
   0% {
     background-position: 0% 50%;
