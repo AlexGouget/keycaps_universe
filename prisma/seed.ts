@@ -4,9 +4,9 @@ import cron from 'node-cron';
 
 
 //every 5 seconds
-cron.schedule('*/5 * * * * *', async () => {
-        console.log('Tâche cron exécutée !');
-});
+// cron.schedule('*/5 * * * * *', async () => {
+//         console.log('Tâche cron exécutée !');
+// });
 
 export async function main() {
         await seed();

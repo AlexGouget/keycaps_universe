@@ -75,7 +75,7 @@ export default function Wall(){
         <div className="">
             <SearchWall filter={filter} updateFilter={updateFilter} />
             {isLoading && <LoadingLoli />}
-            <div className="grid grid-cols-5 mx-auto w-4/5 gap-5">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 mx-auto w-4/5 gap-5">
 
 
                 {data && data.map((artist:any)=><ArtistCard artist={artist}/>)}

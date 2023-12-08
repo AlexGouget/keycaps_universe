@@ -10,6 +10,10 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+html{
+  width: 100%;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -146,6 +150,10 @@ input:focus {
 }
 
 .ant-select-selection-placeholder{
+  color: #9CA3AF !important;
+  @apply text-dark-900
+}
+.ant-select-selection-item{
   color: #9CA3AF !important;
   @apply text-dark-900
 }

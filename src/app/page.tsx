@@ -22,16 +22,26 @@ const handleClick = () =>{
 }
 
   return (
-    <main className="w-full h-full p-24">
-        <header className="z-10 lg:h-[50vh] flex flex-col items-center justify-between mt-44 mb-44">
+    <main className="w-full h-full pt-24 lg:p-24">
+        <header className="z-10 h-[50vh] flex flex-col items-center justify-between mt-44 mb-44">
             <div className='mx-auto flex flex-col justify-center align-middle items-center'>
-                <h1 className={`${pixel.className} text-center lg:text-8xl tracking-[33.00px] whitespace-nowrap`}>KEYCAPS</h1>
-                <p className="font-normal text-[24px] text-center pl-11  tracking-[79px] whitespace-nowrap">UNIVERSE</p>
+                <h1 className={`${pixel.className} text-center text-4xl sm:text-6xl md:text-8xl  lg:text-8xl tracking-[33.00px] whitespace-nowrap`}>KEYCAPS</h1>
+                <p className="font-normal  md:text-[24px] text-center pl-3  sm:pl-8 md:pl-11 tracking-[42px] sm:tracking-[60px]  md:tracking-[79px] whitespace-nowrap">UNIVERSE</p>
             </div>
-            <p className=" w-1/3 text-center whitespace-normal">Discover the art of custom keycaps. Explore unique designs by top creators in our curated collection. Celebrate creativity and craftsmanship in every keystroke!</p>
+            <p className="p-3 sm:w-1/2 md:w-1/3 text-center whitespace-normal">Discover the art of custom keycaps. Explore unique designs by top creators in our curated collection. Celebrate creativity and craftsmanship in every keystroke!</p>
+
+
+            {/*<p className="hidden xs:block">xs </p>*/}
+            {/*<p className="hidden sm:block">sm </p>*/}
+            {/*<p className="hidden md:block">md </p>*/}
+            {/*<p className="hidden lg:block">lg </p>*/}
+            {/*<p className="hidden xl:block">xl </p>*/}
+
+
+
             <ExploreButton handleClick={handleClick} />
         </header>
-        <section ref={ref} className="h-screen z-10 pt-28">
+        <section ref={ref} className="z-10 pt-28">
             <WallComponent />
         </section>
 

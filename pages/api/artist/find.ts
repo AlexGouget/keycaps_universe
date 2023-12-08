@@ -5,7 +5,6 @@ import validator from 'validator'
 
 export const QUERY_ARTIST = ['country', 'design', 'cast', 'profile', 'query']
 
-
 type ArtistQuery = {
     country?: string,
     design?: string,
@@ -13,7 +12,6 @@ type ArtistQuery = {
     profile?: string,
     query?: string
 }
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (req.method === 'POST') return res.status(405).json({message: 'Method not allowed'});
@@ -29,6 +27,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
     });
 
+    console.log(req.query)
+
     const artistsWithCounts = await prisma.artist.findMany({
         where: generateWhereClause(req.query as ArtistQuery),
         include: {
@@ -39,6 +39,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 },
             },
         },
+        orderBy: {
+            name: 'asc'
+        }
     });
 
 
@@ -56,9 +59,9 @@ function generateWhereClause(query: ArtistQuery) {
 
     const collectionConditions = [];
 
-    if (design) collectionConditions.push({ design: { contains: design } });
-    if (cast) collectionConditions.push({ cast: { contains: cast } });
-    if (profile) collectionConditions.push({ profile: { contains: profile } });
+    if (design && design !== 'undefined') collectionConditions.push({ design: { contains: design } });
+    if (cast && cast !== 'undefined') collectionConditions.push({ cast: { contains: cast } });
+    if (profile && profile !== 'undefined')  collectionConditions.push({ profile: { contains: profile } });
 
     if (collectionConditions.length > 0) {
         whereClause.collection = {
