@@ -1,7 +1,5 @@
 name: Deploy Next.js App
 
-#Update CI
-
 on:
   push:
     branches:
@@ -29,20 +27,16 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           source: "."
-          target: "/home/association-hrafn-hugsadi/htdocs/www.association-hrafn-hugsadi.fr/Hrafn-hugsadi"
+          target: "/home/acreativdesign-keycaps/htdocs/keycaps.acreativdesign.fr"
 
       - name: Restart Application
         uses: appleboy/ssh-action@master
-#        env:
-#          MAIL_SECRET: ${{ secrets.MAIL_SECRET }}
-#          NEXT_PUBLIC_RECAPTCHA_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_KEY }}
-#          RECAPTHA_SECRET_KEY: ${{ secrets.RECAPTHA_SECRET_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            cd /home/association-hrafn-hugsadi/htdocs/www.association-hrafn-hugsadi.fr/Hrafn-hugsadi
+            cd /home/acreativdesign-keycaps/htdocs/keycaps.acreativdesign.fr/
             npm install 
             npm run build
             pm2 restart all

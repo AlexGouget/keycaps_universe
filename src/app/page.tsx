@@ -29,19 +29,16 @@ const handleClick = () =>{
                 <p className="font-normal  md:text-[24px] text-center pl-3  sm:pl-8 md:pl-11 tracking-[42px] sm:tracking-[60px]  md:tracking-[79px] whitespace-nowrap">UNIVERSE</p>
             </div>
             <p className="p-3 sm:w-1/2 md:w-1/3 text-center whitespace-normal">Discover the art of custom keycaps. Explore unique designs by top creators in our curated collection. Celebrate creativity and craftsmanship in every keystroke!</p>
-
-
-
-
-
+            {/*<p className="hidden xs:block">xs </p>*/}
+            {/*<p className="hidden sm:block">sm </p>*/}
+            {/*<p className="hidden md:block">md </p>*/}
+            {/*<p className="hidden lg:block">lg </p>*/}
+            {/*<p className="hidden xl:block">xl </p>*/}
             <ExploreButton handleClick={handleClick} />
         </header>
         <section ref={ref} className="z-10 pt-28">
             <WallComponent />
         </section>
-
-
-
     </main>
   )
 }
