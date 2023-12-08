@@ -41,6 +41,5 @@ jobs:
             cd /home/acreativdesign-keycaps/htdocs/keycaps.acreativdesign.fr/
             npm install 
             npm run build
-#            add app to pm2 ecosystem.config.js
             pm2 start npm --name "keycaps" -- run start
             pm2 save
