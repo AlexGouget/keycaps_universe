@@ -31,11 +31,6 @@ const handleClick = () =>{
             <p className="p-3 sm:w-1/2 md:w-1/3 text-center whitespace-normal">Discover the art of custom keycaps. Explore unique designs by top creators in our curated collection. Celebrate creativity and craftsmanship in every keystroke!</p>
 
 
-            {/*<p className="hidden xs:block">xs </p>*/}
-            {/*<p className="hidden sm:block">sm </p>*/}
-            {/*<p className="hidden md:block">md </p>*/}
-            {/*<p className="hidden lg:block">lg </p>*/}
-            {/*<p className="hidden xl:block">xl </p>*/}
 
 
 
