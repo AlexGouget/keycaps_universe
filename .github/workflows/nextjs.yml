@@ -29,17 +29,20 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           source: "."
-          target: "/home/acreativdesign-keycaps/htdocs/keycaps.acreativdesign.fr"
+          target: "/home/association-hrafn-hugsadi/htdocs/www.association-hrafn-hugsadi.fr/Hrafn-hugsadi"
 
       - name: Restart Application
         uses: appleboy/ssh-action@master
+#        env:
+#          MAIL_SECRET: ${{ secrets.MAIL_SECRET }}
+#          NEXT_PUBLIC_RECAPTCHA_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_KEY }}
+#          RECAPTHA_SECRET_KEY: ${{ secrets.RECAPTHA_SECRET_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            cd /home/acreativdesign-keycaps/htdocs/keycaps.acreativdesign.fr/
+            cd /home/association-hrafn-hugsadi/htdocs/www.association-hrafn-hugsadi.fr/Hrafn-hugsadi
             npm install 
             npm run build
-            pm2 start npm --name "keycaps" -- run start
-            pm2 save
+            pm2 restart all
